@@ -1,8 +1,10 @@
 <?php 
+session_start();
 require('../_config.php'); 
-$page = $_GET['page']; 
-if ($page == ""){
+if(!isset($_GET['page'])){
     $page = 1;
+}else{
+    $page = $_GET['page']; 
 }
 ?>
 <!DOCTYPE html>

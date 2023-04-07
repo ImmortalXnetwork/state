@@ -1,13 +1,15 @@
 <?php 
+session_start();
 require('../_config.php'); 
 $parts=parse_url($_SERVER['REQUEST_URI']); 
 $page_url=explode('/', $parts['path']);
 $url = $page_url[count($page_url)-1]  ;
 $name = str_replace("-", " ", $url);
 $name = ucfirst($name);
-$page = $_GET['page']; 
-if ($page == ""){
+if(!isset($_GET['page'])){
     $page = 1;
+}else{
+    $page = $_GET['page']; 
 }
 ?>
 <!DOCTYPE html>

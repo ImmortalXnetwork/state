@@ -1,5 +1,4 @@
-<div id="footer"
-    data-settings='{"auto_play":1,"auto_next":1,"auto_load_comments":0,"enable_dub":0,"anime_name":"jp","play_original_audio":0}'>
+<div id="footer">
     <div id="footer-about">
         <div class="container">
             <div class="footer-top">

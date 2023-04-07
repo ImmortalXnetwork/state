@@ -6,9 +6,10 @@ session_start();
 $keyword = $_GET['keyword'];
 $keyword2 = $_GET['keyword'];
 $keyword = str_replace(' ', '%20', $keyword);
-$page = $_GET['page']; 
-if ($page == ""){
+if(!isset($_GET['page'])){
     $page = 1;
+}else{
+    $page = $_GET['page']; 
 }
 ?>
 <!DOCTYPE html>

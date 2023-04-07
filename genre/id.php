@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require('../_config.php');
 $parts=parse_url($_SERVER['REQUEST_URI']); 
 $page_url=explode('/', $parts['path']);
@@ -7,9 +8,10 @@ $id = $page_url[count($page_url)-1];
 $genre = str_replace("+", "-", $id);
 $id = str_replace("+", " ", $id);
 $id = ucfirst($id);
-$page = $_GET['page']; 
-if ($page == ""){
+if(!isset($_GET['page'])){
     $page = 1;
+}else{
+    $page = $_GET['page']; 
 }
 ?>
 <!DOCTYPE html>

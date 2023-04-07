@@ -1,17 +1,18 @@
 <?php 
+session_start();
 require('./_config.php');
 ?>
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-    <title><?=$websiteTitle?> - Official <?=$websiteTitle?> #1 Watch High Quality Anime Online Without Ads</title>
+    <title><?=$websiteTitle?> #1 Watch High Quality Anime Online Without Ads</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="title"
-        content="<?=$websiteTitle?> - Official <?=$websiteTitle?> #1 Watch High Quality Anime Online Without Ads" />
+        content="<?=$websiteTitle?> #1 Watch High Quality Anime Online Without Ads" />
     <meta name="description"
-        content="<?=$websiteTitle?> - Official <?=$websiteTitle?> #1 Watch High Quality Anime Online Without Ads. You can watch anime online free in HD without Ads. Best place for free find and one-click anime." />
+        content="<?=$websiteTitle?> #1 Watch High Quality Anime Online Without Ads. You can watch anime online free in HD without Ads. Best place for free find and one-click anime." />
     <meta name="keywords"
         content="<?=$websiteTitle?>, watch anime online, free anime, anime stream, anime hd, english sub, kissanime, gogoanime, animeultima, 9anime, 123animes, vidstreaming, gogo-stream, animekisa, zoro.to, gogoanime.run, animefrenzy, animekisa" />
     <meta name="charset" content="UTF-8" />
@@ -20,9 +21,9 @@ require('./_config.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Content-Language" content="en" />
     <meta property="og:title"
-        content="<?=$websiteTitle?> - Official <?=$websiteTitle?> #1 Watch High Quality Anime Online Without Ads">
+        content="<?=$websiteTitle?> #1 Watch High Quality Anime Online Without Ads">
     <meta property="og:description"
-        content="<?=$websiteTitle?> - Official <?=$websiteTitle?> #1 Watch High Quality Anime Online Without Ads. You can watch anime online free in HD without Ads. Best place for free find and one-click anime.">
+        content="<?=$websiteTitle?> #1 Watch High Quality Anime Online Without Ads. You can watch anime online free in HD without Ads. Best place for free find and one-click anime.">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="<?=$websiteTitle?>">
@@ -108,6 +109,71 @@ require('./_config.php');
         <div id="main-wrapper">
             <div class="container">
                 <div id="main-content">
+                <?php if(isset($_COOKIE['userID'])){ 
+                    $user_id = $_COOKIE['userID'];
+                    $select = mysqli_query($conn, "SELECT * FROM `user_history` WHERE user_id = $user_id");
+                    $rows = mysqli_fetch_all($select, MYSQLI_ASSOC);
+                    $rows = array_reverse($rows);
+                    if(count($rows) != 0){ ?>
+
+                <section class="block_area block_area_home">
+                    <div class="block_area-header">
+                        <div class="float-left bah-heading mr-4">
+                            <h2 class="cat-heading"><i class="fas fa-history mr-2"></i>Continue Watching</h2>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="block_area-content block_area-list film_list film_list-grid">
+                            <div class="film_list-wrap">
+
+                                <?php 
+                    
+                     
+                        foreach (array_slice($rows,0,4) as $rows) 
+                      { ?>
+                                <div class="flw-item">
+                                    <div class="film-poster">
+                                        <div class="tick ltr">
+                                            <div class="tick-item-<?=$rows['dubOrSub']?> tick-eps amp-algn">
+                                                <?=strtoupper($rows['dubOrSub'])?></div>
+                                        </div>
+                                        <div class="tick rtl">
+                                            <div class="tick-item tick-eps amp-algn">Episode <?=$rows['anime_ep']?>
+                                            </div>
+                                        </div>
+                                        <img class="film-poster-img lazyload" data-src="<?=$rows['anime_image']?>"
+                                            src="https://anikatsu.me/files/images/no_poster.jpg"
+                                            alt="<?=$rows['anime_title']?>">
+                                        <a class="film-poster-ahref" href="/watch/<?=$rows['anime_id']?>"
+                                            title="<?=$rows['anime_title']?>" data-jname="<?=$rows['anime_title']?>"><i
+                                                class="fas fa-play"></i></a>
+                                    </div>
+                                    <div class="film-detail">
+                                        <h3 class="film-name">
+                                            <a href="/watch/<?=$rows['anime_id']?>" title="<?=$rows['anime_title']?>"
+                                                data-jname="<?=$rows['anime_title']?>"><?=$rows['anime_title']?></a>
+                                        </h3>
+                                        <div class="fd-infor">
+                                            <span class="fdi-item"><?=$rows['anime_release']?></span>
+                                            <span class="dot"></span>
+                                            <span class="fdi-item"><?=$rows['anime_type']?></span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <?php } ?>
+
+
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </section>
+                <?php } ?>
+
+                <?php } ?>
                     <section class="block_area block_area_home">
                         <div class="block_area-header">
                             <div class="float-left bah-heading mr-4">

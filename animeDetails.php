@@ -1,9 +1,10 @@
 <?php 
+session_start();
 require_once('./_config.php');
 $parts=parse_url($_SERVER['REQUEST_URI']); 
 $page_url=explode('/', $parts['path']);
 $url = $page_url[count($page_url)-1];
-//$url = "naruto";
+
 
 $getAnime = file_get_contents("$api/getAnime/$url");
 $getAnime = json_decode($getAnime, true);
@@ -134,8 +135,67 @@ $episodelist = $getAnime['episode_id'];
                                 <div class="film-buttons">
                                     <a href="/watch/<?php foreach(array_slice($episodelist, 0, 1) as $episode1) {?><?=$episode1['episodeId']?><?php } ?>" class="btn btn-radius btn-primary btn-play"><i
                                             class="fas fa-play mr-2"></i>Watch now</a>
-                                </div>
-                                <?php } ?>
+
+                                            <div class="dr-fav" id="watch-list-content">
+
+
+                                        <?php } ?>
+
+                                        <div class="dr-fav" id="watch-list-content">
+
+                                            <?php if(isset($_COOKIE['userID'])){?>
+                                            <?php 
+                                             $watchLater = mysqli_query($conn, "SELECT * FROM `watch_later` WHERE (user_id,anime_id) = ('$user_id','$url')"); 
+                                             $watchLater = mysqli_fetch_assoc($watchLater); 
+                                             if(isset($watchLater['anime_id'])){
+                                             $anime_id = $watchLater['anime_id'];
+                                             }else{
+                                                $anime_id = null;
+                                             }
+                                             if($anime_id == null){ ?>
+                                            <a id="addToList" class="btn btn-radius btn-light"
+                                                animeId="<?=$url?>">&nbsp;<i class='fas fa-plus mr-2'></i> Add to
+                                                List&nbsp;</a>
+                                            <script>
+                                            let btn = document.querySelector('#addToList');
+                                            btn.addEventListener("click", () => {
+                                                let btnValue = btn.getAttribute('animeId');
+                                                $.post('../user/ajax/watchlist.php', {
+                                                    btnValue: btnValue
+                                                }, (response) => {
+                                                    btn.innerHTML = response;
+
+                                                });
+                                            });
+                                            </script>
+                                            <?php }elseif($anime_id == $url){ ?>
+                                            <a id="addToList" class="btn btn-radius btn-light"
+                                                animeId="<?=$url?>">&nbsp;<i class='fas fa-minus mr-2'></i> Remove From
+                                                List&nbsp;</a>
+                                            <script>
+                                            let btn = document.querySelector('#addToList');
+                                            btn.addEventListener("click", () => {
+                                                let btnValue = btn.getAttribute('animeId');
+                                                $.post('../user/ajax/watchlist.php', {
+                                                    btnValue: btnValue
+                                                }, (response) => {
+                                                    btn.innerHTML = response;
+
+                                                });
+                                            });
+                                            </script>
+                                            <?php }?>
+                                            <?php } ?>
+
+
+
+                                            <?php if(!isset($_COOKIE['userID'])){?>
+                                            <a href="<?=$websiteUrl?>/user/login?animeId=<?=$url?>"
+                                                class="btn btn-radius btn-light">&nbsp;<i
+                                                    class='fas fa-plus mr-2'></i>&nbsp;Login to Add&nbsp;</a>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
                                 <div class="film-description m-hide">
                                     <div class="text"><?=$getAnime['synopsis']?></div>
                                 </div>

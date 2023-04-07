@@ -1,7 +1,8 @@
 <?php
-$page = $_GET['page']; 
-if ($page == ""){
+if(!isset($_GET['page'])){
     $page = 1;
+}else{
+    $page = $_GET['page']; 
 }
 include('../_config.php');
 
