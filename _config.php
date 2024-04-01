@@ -1,4 +1,7 @@
-<?php $servername = "localhost"; $username = "animehin_root"; $password = "Fazal@2002"; $dbname = "animehin_fazal"; $conn = new mysqli($servername, $username, $password, $dbname); if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } echo "Connected successfully";
+<?php 
+$servername = "localhost"; $username = "animehin_root"; $password = "Fazal@2002"; $dbname = "animehin_fazal"; 
+$conn = new mysqli($servername, $username, $password, $dbname); 
+if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } echo "Connected successfully";
 
 $websiteTitle = "AnimeState"; // Website Name
 $websiteUrl = "//{$_SERVER['https://heroku.com']}";  // Website URL
