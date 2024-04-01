@@ -1,6 +1,5 @@
 <?php 
-$conn = mysqli_connect('localhost', 'animehin_root' , 'Fazal@2002', 'animehin_fazal') or die('Connection fail');
-
+$conn = mysqli_connect("localhost","animehin_root","Fazal@2002","animehin_fazal") or die("Error " . mysqli_error($conn));
 
 $websiteTitle = "AniKatsu"; // Website Name
 $websiteUrl = "//{$_SERVER['SERVER_NAME']}";  // Website URL
