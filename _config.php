@@ -1,5 +1,5 @@
 <?php 
-$conn = mysqli_connect("localhost","root","Fazal@2002","animehin_fazal");
+$conn = mysqli_connect("localhost","animehin_root","Fazal@2002","animehin_fazal");
 
 $websiteTitle = "AniKatsu"; // Website Name
 $websiteUrl = "//{$_SERVER['SERVER_NAME']}";  // Website URL
