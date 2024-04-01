@@ -1,27 +1,25 @@
-<?php 
-$servername = "localhost"; $username = "animehin_root"; $password = "Fazal@2002"; $dbname = "animehin_fazal"; 
-$conn = new mysqli($servername, $username, $password, $dbname); 
-if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } echo "Connected successfully";
+<?php $servername = "localhost"; $username = "animehin_root"; $password = "Fazal@2002"; $dbname = "animehin_fazal"; // Create connection $conn = new mysqli($servername, $username, $password, $dbname); // Check connection if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } echo "Connected successfully";
 
 $websiteTitle = "AnimeState"; // Website Name
-$websiteUrl = "//{$_SERVER['https://heroku.com']}";  // Website URL
+$websiteUrl = "//{$_SERVER['SERVER_NAME']}";  // Website URL
 $websiteLogo = $websiteUrl . "/files/images/logo.png?v=2"; // Logo
-$contactEmail = "Fazal0069@outlook.com"; // Contact Email
+$contactEmail = "fazal0207@outlook.com"; // Contact Email
 
-$version = "0.4";
+$version = "0.3";
 
 //Donate 
-$donate = "#";
+$donate = "https://www.buymeacoffee.com/fazal00007";
 
 // Socials 
-$telegram = "https://t.me/#"; // telegram
-$discord = "https://discord.com/#"; // Discord
-$redit = "#"; // Reddit
-$twitter = "#"; // Twitter
+$telegram = "https://t.me/Infamous_Hydra"; // telegram
+$discord = "https://discord.gg/DsTh4U8N#"; // Discord
+$redit = "https://www.reddit.com/u/Anime_State?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=1"; // Reddit
+$twitter = "https://twitter.com/AnimesState?t=FJhZCZzRq4Cgk3JR8UxR_A&s=09"; // Twitter
  
 
 
 $disqus = "https://indianime.disqus.com"; // Disqus
+
 
 
 // API URL
