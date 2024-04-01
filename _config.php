@@ -1,9 +1,9 @@
 <?php $servername = "localhost"; $username = "animehin_root"; $password = "Fazal@2002"; $dbname = "animehin_fazal"; // Create connection $conn = new mysqli($servername, $username, $password, $dbname); // Check connection if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } echo "Connected successfully";
 
-$websiteTitle = "AniKatsu"; // Website Name
-$websiteUrl = "//{$_SERVER['SERVER_NAME']}";  // Website URL
+$websiteTitle = "Anime_State"; // Website Name
+$websiteUrl = "//{$_SERVER['ANIME_STATE']}";  // Website URL
 $websiteLogo = $websiteUrl . "/files/images/logo.png?v=2"; // Logo
-$contactEmail = "xyz@gmail.com"; // Contact Email
+$contactEmail = "Fazal0069@outlook.com"; // Contact Email
 
 $version = "0.4";
 
