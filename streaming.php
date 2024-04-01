@@ -24,7 +24,7 @@ if (end($slug) == 'dub') {
 $getEpisode = file_get_contents("$api/getEpisode/$url");
 $getEpisode = json_decode($getEpisode, true);
 if (isset($getEpisode['error'])) {
-    header('Location: https://anikatsu.me/home');
+    header('Location: https://animestate.live/home');
 }
 ;
 
