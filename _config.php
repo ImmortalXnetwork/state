@@ -24,7 +24,7 @@ $disqus = "https://indianime.disqus.com"; // Disqus
 
 
 // API URL
-$api = "https://apistate-7bb868d2c9c5.herokuapp.com"; // https://github.com/shashankktiwariii/anikatsu-api
+$api = "https://api-animewatch-9a25ea7d3f90.herokuapp.com"; // https://github.com/shashankktiwariii/anikatsu-api
 
 
 $banner = $websiteUrl . "/files/images/banner.png";  //Banner
