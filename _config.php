@@ -3,7 +3,7 @@ $conn = new mysqli('$servername', '$username', '$password', '$dbname'); // Check
 if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } echo "Connected successfully";
 
 $websiteTitle = "AnimeState"; // Website Name
-$websiteUrl = "//{$_SERVER['SERVER_NAME']}";  // Website URL
+$websiteUrl = "//{$_SERVER['https://heroku.com']}";  // Website URL
 $websiteLogo = $websiteUrl . "/files/images/logo.png?v=2"; // Logo
 $contactEmail = "Fazal0069@outlook.com"; // Contact Email
 
