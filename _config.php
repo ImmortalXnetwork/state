@@ -1,5 +1,5 @@
 <?php 
-$conn = mysqli_connect("localhost", 'animehin_root' , 'Fazal@2002', "anikatsu") or die("Connection fail");
+$conn = mysqli_connect('localhost', 'animehin_root' , 'Fazal@2002', 'anikatsu') or die("Connection fail");
 
 
 $websiteTitle = "AniKatsu"; // Website Name
